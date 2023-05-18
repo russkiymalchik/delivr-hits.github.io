@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Delivery Profile</title>
+
+		<link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+		<link rel="manifest" href="img/site.webmanifest" />
+		<link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#1b1b1b" />
+		<meta name="msapplication-TileColor" content="#1b1b1b" />
+		<meta name="theme-color" content="#ffffff" />
+
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+
+		<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/imask"></script>
+		<script type="text/javascript" src="js/navbar.js"></script>
+		<script type="text/javascript" src="js/profile.js"></script>
+	</head>
+
+	<body>
+		<!-- navbar  -->
+		<nav class="navbar navbar-expand-lg bg-white">
+			<div class="container py-2">
+				<a class="navbar-brand" href="#">Delivery<span>Eats</span></a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+						<li class="nav-item"><a class="nav-link" href="orders.html">Orders</a></li>
+						<li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+					</ul>
+					<div class="d-flex align-items-center">
+						<a class="nav-link active me-3" href="profile.html" id="account">Account</a>
+						<form id="logoutForm">
+							<input type="hidden" name="token" value="" />
+							<button type="submit" class="btn btn-deats btn-md">
+								<span
+									class="spinner-border spinner-border-sm me-2 d-none"
+									role="status"
+									aria-hidden="true">
+								</span
+								>Logout
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- profile form -->
+		<section id="profile">
+			<div class="container py-5">
+				<div class="bg-white rounded-3 p-5 col-12 col-lg-6 mx-auto shadow-sm">
+					<h4>User Profile</h4>
+
+					<form class="mt-4 needs-validation" id="profileForm" novalidate>
+						<div class="mb-4 row">
+							<label for="name" class="col-form-label col-4">Full Name</label>
+							<div class="col-12 col-lg-8">
+								<input
+									type="text"
+									class="form-control"
+									id="name"
+									placeholder="Enter your name"
+									required
+									aria-describedby="nameFeedback" />
+								<div class="invalid-feedback" id="nameFeedback">Please enter your name</div>
+							</div>
+						</div>
+
+						<div class="mb-4 row">
+							<label for="email" class="col-form-label col-4">Email</label>
+							<div class="col-12 col-lg-8">
+								<input type="email" class="form-control" id="email" disabled readonly />
+							</div>
+						</div>
+
+						<div class="mb-4 row">
+							<label for="dob" class="col-form-label col-4">Date of Birth</label>
+							<div class="col-12 col-lg-8">
+								<input
+									type="date"
+									class="form-control"
+									id="dob"
+									required
+									aria-describedby="dobFeedback" />
+								<div class="invalid-feedback" id="dobFeedback">Please enter your date of birth</div>
+							</div>
+						</div>
+
+						<div class="mb-4 row">
+							<label for="gender" class="col-form-label col-4">Gender</label>
+							<div class="col-12 col-lg-8">
+								<input type="text" readonly class="form-control" id="gender" disabled readonly />
+							</div>
+						</div>
+
+						<div class="mb-4 row">
+							<label for="address" class="col-form-label col-4">Home Address</label>
+							<div class="col-12 col-lg-8">
+								<input
+									type="text"
+									class="form-control"
+									id="address"
+									placeholder="Enter your address"
+									required
+									aria-describedby="addressFeedback" />
+								<div class="invalid-feedback" id="addressFeedback">Please enter your address</div>
+							</div>
+						</div>
+
+						<div class="mb-4 row">
+							<label for="phone" class="col-form-label col-4">Phone Number</label>
+							<div class="col-12 col-lg-8">
+								<input
+									type="text"
+									class="form-control"
+									id="phone"
+									placeholder="Enter your phone number"
+									required
+									aria-describedby="phoneFeedback" />
+								<div class="invalid-feedback" id="phoneFeedback">Please enter your phone number</div>
+							</div>
+						</div>
+
+						<div class="d-flex justify-content-end">
+							<button type="submit" class="btn btn-deats">
+								<span
+									class="spinner-border spinner-border-sm me-2 d-none"
+									role="status"
+									aria-hidden="true"
+									id="profileSpinner">
+								</span>
+								Save Changes
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<!-- toast -->
+		<div class="toast-container position-fixed bottom-0 end-0 p-3">
+			<div
+				id="liveToast"
+				class="toast align-items-center text-bg-deats border-0"
+				role="alert"
+				aria-live="assertive"
+				aria-atomic="true">
+				<div class="d-flex">
+					<div class="toast-body"></div>
+					<button
+						type="button"
+						class="btn-close btn-close-deats me-2 m-auto"
+						data-bs-dismiss="toast"
+						aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

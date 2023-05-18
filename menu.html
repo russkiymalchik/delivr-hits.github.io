@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Delivery Order</title>
+
+		<link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+		<link rel="manifest" href="img/site.webmanifest" />
+		<link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#1b1b1b" />
+		<meta name="msapplication-TileColor" content="#1b1b1b" />
+		<meta name="theme-color" content="#ffffff" />
+
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="vendor/bootstrap-select/css/bootstrap-select.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+
+		<script type="text/javascript" src="vendor/jquery/jquery-3.6.4.min.js"></script>
+		<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script type="text/javascript" src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+		<script type="text/javascript" src="vendor/jquery/pagination.js"></script>
+
+		<script type="text/javascript" src="js/navbar.js"></script>
+		<script type="text/javascript" src="js/menu.js"></script>
+	</head>
+
+	<body>
+		<!-- navbar section -->
+		<nav class="navbar navbar-expand-lg bg-white">
+			<div class="container py-2">
+				<a class="navbar-brand" href="#">Delivery<span>Eats</span></a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
+						<li class="nav-item"><a class="nav-link" href="orders.html">Orders</a></li>
+						<li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+					</ul>
+					<div class="d-flex align-items-center">
+						<a class="nav-link me-3" href="profile.html" id="account">Account</a>
+						<form id="logoutForm">
+							<button type="submit" class="btn btn-deats btn-md">
+								<span
+									class="spinner-border spinner-border-sm me-2 d-none"
+									role="status"
+									aria-hidden="true">
+								</span
+								>Logout
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- menu section -->
+		<section id="menu">
+			<div class="container py-5">
+				<div class="bg-white rounded-3 p-5 shadow-sm">
+					<h4 class="mb-4">Menu Selection</h4>
+					<form class="d-flex justify-content-between flex-column flex-lg-row" id="filterForm">
+						<div class="w-100 row">
+							<div class="col-12 col-lg-3 mb-4 mb-lg-0 d-flex flex-column justify-content-between">
+								<label for="categories" class="form-label">Category</label>
+								<select
+									class="selectpicker form-control"
+									name="categories"
+									id="categories"
+									title="All"
+									multiple
+									data-selected-text-format="count">
+									<option value="Wok">Wok</option>
+									<option value="Pizza">Pizza</option>
+									<option value="Soup">Soup</option>
+									<option value="Dessert">Dessert</option>
+									<option value="Drink">Drink</option>
+								</select>
+							</div>
+
+							<div class="col-12 col-lg-3 mb-4 mb-lg-0 d-flex flex-column justify-content-between">
+								<label for="sorting" class="form-label">Sort</label>
+								<select class="selectpicker form-control" name="sorting" id="sorting" title="Default">
+									<option value="NameAsc">Name (A-Z)</option>
+									<option value="NameDesc">Name (Z-A)</option>
+									<option value="PriceAsc">Price (Low to High)</option>
+									<option value="PriceDesc">Price (High to Low)</option>
+									<option value="RatingAsc">Rating (Low to High)</option>
+									<option value="RatingDesc">Rating (High to Low)</option>
+								</select>
+							</div>
+
+							<div class="col-12 col-lg-6 mb-4 mb-lg-0 d-flex flex-column justify-content-between">
+								<label for="vegetarian" class="form-label">Option</label>
+								<div class="form-check form-switch">
+									<input
+										class="form-check-input mb-2"
+										type="checkbox"
+										role="switch"
+										id="vegetarian" />
+									<label class="form-check-label" for="vegetarian">
+										Show only vegetarian dishes
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="d-flex align-items-end">
+							<button type="submit" class="btn btn-deats btn-md w-100 w-lg-auto">
+								<span
+									class="spinner-border spinner-border-sm me-2 d-none"
+									role="status"
+									aria-hidden="true">
+								</span>
+								Filter
+							</button>
+						</div>
+					</form>
+
+					<div class="mt-4 row row-cols-4 g-4" id="foodContainer">
+						<div class="col-12">
+							<div class="d-flex py-5 justify-content-center align-items-center text-center">
+								<h6>Fetching Data</h6>
+							</div>
+						</div>
+					</div>
+
+					<div class="d-flex justify-content-center">
+						<nav class="mt-4" id="pagination">
+							<ul class="pagination"></ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- toast -->
+		<div class="toast-container position-fixed bottom-0 end-0 p-3">
+			<div
+				id="liveToast"
+				class="toast align-items-center text-bg-deats border-0"
+				role="alert"
+				aria-live="assertive"
+				aria-atomic="true">
+				<div class="d-flex">
+					<div class="toast-body"></div>
+					<button
+						type="button"
+						class="btn-close btn-close-deats me-2 m-auto"
+						data-bs-dismiss="toast"
+						aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
